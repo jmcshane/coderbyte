@@ -1,37 +1,30 @@
 function SecondGreatLow(arg) {
-    
-    var lowest, highest, secondLowest, secondHighest;
-    console.log(arg);
-    var elt = arg.pop();
-    while (elt !== undefined) {
-        console.log(elt);
-        if (lowest === undefined || elt < lowest) {
-            lowest = elt;
-            if (secondHighest === undefined) {
-                secondHighest = elt;
-            }
-        }
-        if (highest === undefined || elt > highest) {
-            highest = elt;
-            if (secondLowest === undefined) {
-                secondLowest = elt;
-            }
-        }
-        if (elt > highest) {
-            highest = elt;
-        } else if (elt < highest && elt > secondHighest) {
-            secondHighest = elt;
-        } else if (elt < secondLowest && elt > lowest) {
-            secondLowest = elt
-        } else if (elt < lowest) {
-            lowest = elt
-        }
-        elt = arg.pop();
+    var sortArr = [];
+    if (arg.length == 2 && (arg[0] === arg[1])) {
+        return arg[0] + " " + arg[1];
     }
-    return secondHighest + " " + secondLowest;
+    var elt;
+    while ((elt = arg.pop()) != null) {
+        if (sortArr.indexOf(elt) === -1) {
+            sortArr.push(elt);
+        }
+    }
+    sortArr.sort(function(a,b){ return a-b});
+    console.log(sortArr);
+    return sortArr[sortArr.length - 2] + " " + sortArr[1];
 }
 
 
 
-var out = SecondGreatLow([78, 90, 100, 1,1,1,1,1, 2]);
+var out = SecondGreatLow([1,2]);
+console.log(out);
+
+out = SecondGreatLow([1,2,2,2,2,5]);
+console.log(out);
+
+out = SecondGreatLow([5,5,5,7,100, 100]);
+console.log(out);
+
+
+out = SecondGreatLow([-4, -5, 10, 2]);
 console.log(out);

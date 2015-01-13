@@ -8,6 +8,6 @@ if [ "$#" -ne 1 ]; then
 fi
 FILE_DIR=`pwd`
 
-fileString="function $1(arg) {\n\n}\n\nvar out = $1();\nconsole.log(out);"
+fileString="function $1(arg) {\n\n}\n\nvar out = $1();\nconsole.log(\"Should be \");\nconsole.log(out);\nout = $1();\nconsole.log(\"Should be \");\nconsole.log(out);\nout = $1();\nconsole.log(\"Should be \");\nconsole.log(out);\nout = $1();\nconsole.log(\"Should be \");\nconsole.log(out);\n"
 
 echo -e $"$fileString" > "$FILE_DIR/$1.js"
